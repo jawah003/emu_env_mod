@@ -698,6 +698,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--version', '-v', action='version', version='%(prog)s v' + __version__)
     subparsers = parser.add_subparsers(dest="subparser_name", help='sub-commands')
+    abundance_parser.add_argument(
+    '--min-length', type=int, default=1200,
+    help='Minimum read length to keep [1200]')
+    abundance_parser.add_argument(
+    '--max-length', type=int, default=10000,
+    help='Maximum read length to keep [10000]')
+    abundance_parser.add_argument(
+    '--min-quality', type=float, default=17.0,
+    help='Minimum average read quality to keep [17.0]')
     abundance_parser = subparsers.\
         add_parser("abundance", help="Generate relative abundance estimates")
     abundance_parser.add_argument(
